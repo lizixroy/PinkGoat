@@ -13,6 +13,7 @@
 		B0E731EA205DC646006098EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0E731E8205DC646006098EC /* Main.storyboard */; };
 		B0E731F6205DC646006098EC /* PinkGoatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E731F5205DC646006098EC /* PinkGoatTests.swift */; };
 		B0E73201205DC646006098EC /* PinkGoatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73200205DC646006098EC /* PinkGoatUITests.swift */; };
+		B0E73211205DC66B006098EC /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73210205DC66B006098EC /* Link.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B0E731FC205DC646006098EC /* PinkGoatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinkGoatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E73200205DC646006098EC /* PinkGoatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinkGoatUITests.swift; sourceTree = "<group>"; };
 		B0E73202205DC646006098EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0E73210205DC66B006098EC /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,8 @@
 		B0E731E1205DC646006098EC /* PinkGoat */ = {
 			isa = PBXGroup;
 			children = (
+				B0E7320F205DC65E006098EC /* Models */,
+				B0E7320E205DC652006098EC /* URDF */,
 				B0E731E2205DC646006098EC /* AppDelegate.swift */,
 				B0E731E4205DC646006098EC /* ViewController.swift */,
 				B0E731E6205DC646006098EC /* Assets.xcassets */,
@@ -122,6 +126,21 @@
 				B0E73202205DC646006098EC /* Info.plist */,
 			);
 			path = PinkGoatUITests;
+			sourceTree = "<group>";
+		};
+		B0E7320E205DC652006098EC /* URDF */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = URDF;
+			sourceTree = "<group>";
+		};
+		B0E7320F205DC65E006098EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0E73210205DC66B006098EC /* Link.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E73211205DC66B006098EC /* Link.swift in Sources */,
 				B0E731E5205DC646006098EC /* ViewController.swift in Sources */,
 				B0E731E3205DC646006098EC /* AppDelegate.swift in Sources */,
 			);
