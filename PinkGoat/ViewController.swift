@@ -7,21 +7,37 @@
 //
 
 import Cocoa
+import SWXMLHash
+import SceneKit
 
 class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let url = Bundle.main.url(forResource: "link-example", withExtension: "urdf") else {
+            print("can't find file")
+            return
+        }
+        guard let xmlData = try? Data(contentsOf: url) else {
+            print("can't load xmlData")
+            return
+        }
+        let indexer = SWXMLHash.parse(xmlData)
+        let originIndexer = indexer["link"]["visual"]["origin"]
+        
+        let urdfParser = URDFParser()
+        guard let (displacement, orientation) = urdfParser.parseOrigin(indexer: originIndexer) else {
+            print("failed to parse origin")
+            return
+        }
+        print("displacement: \(displacement)")
+        print("orientatoin: \(orientation)")
     }
 
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
         }
     }
-
 
 }
 
