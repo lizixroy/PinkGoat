@@ -23,15 +23,15 @@ class ViewController: NSViewController {
             return
         }
         let indexer = SWXMLHash.parse(xmlData)
-        let originIndexer = indexer["link"]["visual"]["origin"]
+        
+        let materialIndexer = indexer["link"]["visual"]["material"]
         
         let urdfParser = URDFParser()
-        guard let (displacement, orientation) = urdfParser.parseOrigin(indexer: originIndexer) else {
+        guard let material = try! urdfParser.parseMaterial(materialIndexer: materialIndexer) else {
             print("failed to parse origin")
             return
         }
-        print("displacement: \(displacement)")
-        print("orientatoin: \(orientation)")
+        print("material: \(material)")
     }
 
     override var representedObject: Any? {

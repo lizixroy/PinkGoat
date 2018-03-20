@@ -10,9 +10,9 @@
      <geometry>
        <box size="1 1 1" />
      </geometry>
-     <material name="Cyan">
-       <color rgba="0 1.0 1.0 1.0"/>
-     </material>
+        <material name="Cyan">
+        <color rgba="0 1.0 1.0 1.0"/>
+        </material>
    </visual>
 
    <collision>

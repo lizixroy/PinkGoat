@@ -9,6 +9,7 @@
 import Foundation
 
 struct Material {
-    let name: String
-    let color: CGColor
+    let name: String?
+    let color: CGColor?
+    let filepath: String?
 }
