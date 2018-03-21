@@ -26,6 +26,7 @@
 		B0E7322E2060BBA8006098EC /* URDFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7322D2060BBA8006098EC /* URDFError.swift */; };
 		B0E7323220621752006098EC /* LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7323120621752006098EC /* LinkTests.swift */; };
 		B0E73234206217D8006098EC /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73233206217D8006098EC /* Joint.swift */; };
+		B0E7323620623131006098EC /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7323520623131006098EC /* Origin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		B0E7322D2060BBA8006098EC /* URDFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URDFError.swift; sourceTree = "<group>"; };
 		B0E7323120621752006098EC /* LinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTests.swift; sourceTree = "<group>"; };
 		B0E73233206217D8006098EC /* Joint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joint.swift; sourceTree = "<group>"; };
+		B0E7323520623131006098EC /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				B0E73228205DD987006098EC /* Geometry.swift */,
 				B0E7322A205DDDF4006098EC /* Material.swift */,
 				B0E73233206217D8006098EC /* Joint.swift */,
+				B0E7323520623131006098EC /* Origin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				B0E73229205DD987006098EC /* Geometry.swift in Sources */,
 				B0E73227205DD971006098EC /* Visual.swift in Sources */,
 				B0E73211205DC66B006098EC /* Link.swift in Sources */,
+				B0E7323620623131006098EC /* Origin.swift in Sources */,
 				B0E73220205DC88C006098EC /* URDFParser.swift in Sources */,
 				B0E73234206217D8006098EC /* Joint.swift in Sources */,
 				B0E731E5205DC646006098EC /* ViewController.swift in Sources */,
@@ -518,10 +522,12 @@
 					"$(PROJECT_DIR)/PinkGoat",
 					"$(PROJECT_DIR)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = PinkGoat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = roy.PinkGoat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -539,10 +545,12 @@
 					"$(PROJECT_DIR)/PinkGoat",
 					"$(PROJECT_DIR)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = PinkGoat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = roy.PinkGoat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

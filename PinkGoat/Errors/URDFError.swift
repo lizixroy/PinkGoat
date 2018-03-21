@@ -12,4 +12,5 @@ enum URDFError: Error {
     case originError(message: String)
     case geometryError(message: String)
     case materialError(message: String)
+    case jointError(message: String)
 }

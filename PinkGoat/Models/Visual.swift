@@ -10,8 +10,7 @@ import Foundation
 import SceneKit
 
 struct Visual {
-    let originDisplacement: SCNVector3
-    let originOrientation: SCNVector3
+    let origin: Origin
     let material: Material?
     let geometry: Geometry
 }

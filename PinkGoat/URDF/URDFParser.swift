@@ -17,10 +17,30 @@ class URDFParser {
         axis, parent, child, origin
      */
     
-    func parseJoint(indexer: XMLIndexer) throws -> Joint? {
+    func parseJoint(jointIndexer: XMLIndexer) throws -> Joint? {
+        guard let name: String = jointIndexer.value(ofAttribute: "name") else {
+            throw URDFError.jointError(message: "Name is missing")
+        }
+        guard let typeStr: String = jointIndexer.value(ofAttribute: "type") else {
+            throw URDFError.jointError(message: "Type is missing")
+        }
+        guard let type = Joint.makeJointType(fromString: typeStr) else {
+            throw URDFError.jointError(message: "Invalid joint type: \(typeStr)")
+        }
         
+        let parentIndexer = jointIndexer["parent"]
+        let childIndexer = jointIndexer["child"]
+        guard let parentLinkName: String = parentIndexer.value(ofAttribute: "link") else {
+            throw URDFError.jointError(message: "Couldn't find parent")
+        }
+        guard let childLinkName: String = childIndexer.value(ofAttribute: "link") else {
+            throw URDFError.jointError(message: "Couldn't find child")
+        }
         
-        return nil
+        let originIndexer = jointIndexer["origin"]
+        let origin = try parseOrigin(originIndexer: originIndexer)
+        
+        return Joint(name: name, type: type, parentLinkName: parentLinkName, childLinkName: childLinkName, origin: origin)
     }
     
     // only parse visual information right now
@@ -31,7 +51,7 @@ class URDFParser {
     }
     
     // TODO: NEED to give type info to return value so it' easier for caller to differentiate between different values.
-    func parseOrigin(originIndexer: XMLIndexer) throws -> (SCNVector3, SCNVector3) {
+    func parseOrigin(originIndexer: XMLIndexer) throws -> Origin {
         guard let originInfo = originIndexer.element else {
             throw URDFError.originError(message: "Couldn't find origin")
         }
@@ -77,7 +97,8 @@ class URDFParser {
         let orientation = SCNVector3(x: CGFloat(row),
                                      y: CGFloat(pitch),
                                      z: CGFloat(yaw))
-        return (displacement, orientation)
+        
+        return Origin(xyz: displacement, rpy: orientation)
     }
     
     func parseGeomotry(geometryIndexer: XMLIndexer) throws -> Geometry {
@@ -157,8 +178,7 @@ class URDFParser {
         let origin = try parseOrigin(originIndexer: originIndexer)
         let geometry = try parseGeomotry(geometryIndexer: geometryIndexer)
         let material = try parseMaterial(materialIndexer: materialIndexer)
-        return Visual(originDisplacement: origin.0,
-                      originOrientation: origin.1,
+        return Visual(origin: origin,
                       material: material,
                       geometry: geometry)
     }
