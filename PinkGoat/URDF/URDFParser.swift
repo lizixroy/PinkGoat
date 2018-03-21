@@ -12,12 +12,22 @@ import SceneKit
 
 class URDFParser {
     
+    /**
+        NOTE: right now only parse the following attributes:
+        axis, parent, child, origin
+     */
+    
+    func parseJoint(indexer: XMLIndexer) throws -> Joint? {
+        
+        
+        return nil
+    }
+    
     // only parse visual information right now
     func parseLink(indexer: XMLIndexer) throws -> Link? {
         let visualInfo = indexer["link"]["visual"]
         let visual = try parseVisual(visualIndexer: visualInfo)
-        // TODO: build real link
-        return nil
+        return Link(visual: visual)
     }
     
     // TODO: NEED to give type info to return value so it' easier for caller to differentiate between different values.
@@ -140,7 +150,7 @@ class URDFParser {
         return CGColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
     
-    func parseVisual(visualIndexer: XMLIndexer) throws -> Visual? {
+    func parseVisual(visualIndexer: XMLIndexer) throws -> Visual {
         let originIndexer = visualIndexer["origin"]
         let geometryIndexer = visualIndexer["geometry"]
         let materialIndexer = visualIndexer["material"]

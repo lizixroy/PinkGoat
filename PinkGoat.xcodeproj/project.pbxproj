@@ -24,6 +24,8 @@
 		B0E73229205DD987006098EC /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73228205DD987006098EC /* Geometry.swift */; };
 		B0E7322B205DDDF4006098EC /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7322A205DDDF4006098EC /* Material.swift */; };
 		B0E7322E2060BBA8006098EC /* URDFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7322D2060BBA8006098EC /* URDFError.swift */; };
+		B0E7323220621752006098EC /* LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7323120621752006098EC /* LinkTests.swift */; };
+		B0E73234206217D8006098EC /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73233206217D8006098EC /* Joint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		B0E73228205DD987006098EC /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		B0E7322A205DDDF4006098EC /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		B0E7322D2060BBA8006098EC /* URDFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URDFError.swift; sourceTree = "<group>"; };
+		B0E7323120621752006098EC /* LinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTests.swift; sourceTree = "<group>"; };
+		B0E73233206217D8006098EC /* Joint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 			children = (
 				B0E731F5205DC646006098EC /* PinkGoatTests.swift */,
 				B0E731F7205DC646006098EC /* Info.plist */,
+				B0E7323120621752006098EC /* LinkTests.swift */,
 			);
 			path = PinkGoatTests;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				B0E73226205DD971006098EC /* Visual.swift */,
 				B0E73228205DD987006098EC /* Geometry.swift */,
 				B0E7322A205DDDF4006098EC /* Material.swift */,
+				B0E73233206217D8006098EC /* Joint.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 				B0E73227205DD971006098EC /* Visual.swift in Sources */,
 				B0E73211205DC66B006098EC /* Link.swift in Sources */,
 				B0E73220205DC88C006098EC /* URDFParser.swift in Sources */,
+				B0E73234206217D8006098EC /* Joint.swift in Sources */,
 				B0E731E5205DC646006098EC /* ViewController.swift in Sources */,
 				B0E7322E2060BBA8006098EC /* URDFError.swift in Sources */,
 				B0E731E3205DC646006098EC /* AppDelegate.swift in Sources */,
@@ -353,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0E731F6205DC646006098EC /* PinkGoatTests.swift in Sources */,
+				B0E7323220621752006098EC /* LinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
