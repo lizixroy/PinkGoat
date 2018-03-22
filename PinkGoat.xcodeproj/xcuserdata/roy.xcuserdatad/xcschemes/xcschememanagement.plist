@@ -9,6 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>PinkGoatTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B0E731DE205DC646006098EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0E731F0205DC646006098EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0E731FB205DC646006098EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

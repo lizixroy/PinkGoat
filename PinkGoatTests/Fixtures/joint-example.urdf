@@ -1,0 +1,14 @@
+<root>
+    <joint name="hip" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="torso"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.05"/>
+    </joint>
+    <joint name="shoulder" type="continuous">
+        <axis xyz="0 1 0"/>
+        <parent link="torso"/>
+        <child link="upper_arm"/>
+        <origin rpy="0 1.5708 0" xyz="0.0 -0.1 0.45"/>
+    </joint>
+</root>

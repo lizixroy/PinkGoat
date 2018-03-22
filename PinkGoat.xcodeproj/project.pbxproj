@@ -14,7 +14,6 @@
 		B0E731F6205DC646006098EC /* PinkGoatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E731F5205DC646006098EC /* PinkGoatTests.swift */; };
 		B0E73201205DC646006098EC /* PinkGoatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73200205DC646006098EC /* PinkGoatUITests.swift */; };
 		B0E73211205DC66B006098EC /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73210205DC66B006098EC /* Link.swift */; };
-		B0E7321B205DC857006098EC /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E7321A205DC857006098EC /* SWXMLHash.framework */; };
 		B0E7321C205DC867006098EC /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E7321A205DC857006098EC /* SWXMLHash.framework */; };
 		B0E7321D205DC867006098EC /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0E7321A205DC857006098EC /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B0E73220205DC88C006098EC /* URDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7321F205DC88C006098EC /* URDFParser.swift */; };
@@ -27,6 +26,10 @@
 		B0E7323220621752006098EC /* LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7323120621752006098EC /* LinkTests.swift */; };
 		B0E73234206217D8006098EC /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E73233206217D8006098EC /* Joint.swift */; };
 		B0E7323620623131006098EC /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7323520623131006098EC /* Origin.swift */; };
+		B0E7323820634ECD006098EC /* JointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7323720634ECD006098EC /* JointTests.swift */; };
+		B0E7323A20634F22006098EC /* URDFParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E7323920634F22006098EC /* URDFParserTests.swift */; };
+		B0E7323E20635014006098EC /* joint-example.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B0E7323D20635014006098EC /* joint-example.urdf */; };
+		B0E73240206350FC006098EC /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E7321A205DC857006098EC /* SWXMLHash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		B0E7323120621752006098EC /* LinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTests.swift; sourceTree = "<group>"; };
 		B0E73233206217D8006098EC /* Joint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joint.swift; sourceTree = "<group>"; };
 		B0E7323520623131006098EC /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
+		B0E7323720634ECD006098EC /* JointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointTests.swift; sourceTree = "<group>"; };
+		B0E7323920634F22006098EC /* URDFParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URDFParserTests.swift; sourceTree = "<group>"; };
+		B0E7323D20635014006098EC /* joint-example.urdf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "joint-example.urdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0E7321C205DC867006098EC /* SWXMLHash.framework in Frameworks */,
-				B0E7321B205DC857006098EC /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E73240206350FC006098EC /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +129,7 @@
 				B0E731F4205DC646006098EC /* PinkGoatTests */,
 				B0E731FF205DC646006098EC /* PinkGoatUITests */,
 				B0E731E0205DC646006098EC /* Products */,
+				B0E7323F206350FC006098EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,9 +163,12 @@
 		B0E731F4205DC646006098EC /* PinkGoatTests */ = {
 			isa = PBXGroup;
 			children = (
+				B0E7323C20634FB6006098EC /* Fixtures */,
 				B0E731F5205DC646006098EC /* PinkGoatTests.swift */,
 				B0E731F7205DC646006098EC /* Info.plist */,
 				B0E7323120621752006098EC /* LinkTests.swift */,
+				B0E7323720634ECD006098EC /* JointTests.swift */,
+				B0E7323920634F22006098EC /* URDFParserTests.swift */,
 			);
 			path = PinkGoatTests;
 			sourceTree = "<group>";
@@ -208,6 +218,21 @@
 				B0E7322D2060BBA8006098EC /* URDFError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		B0E7323C20634FB6006098EC /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				B0E7323D20635014006098EC /* joint-example.urdf */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		B0E7323F206350FC006098EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E7323E20635014006098EC /* joint-example.urdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +389,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E7323820634ECD006098EC /* JointTests.swift in Sources */,
+				B0E7323A20634F22006098EC /* URDFParserTests.swift in Sources */,
 				B0E731F6205DC646006098EC /* PinkGoatTests.swift in Sources */,
 				B0E7323220621752006098EC /* LinkTests.swift in Sources */,
 			);
@@ -563,6 +591,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PinkGoatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = roy.PinkGoatTests;
@@ -580,6 +612,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q273YZ238V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PinkGoatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = roy.PinkGoatTests;
