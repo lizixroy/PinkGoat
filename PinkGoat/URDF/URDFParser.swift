@@ -45,9 +45,7 @@ class URDFParser {
     
     // only parse visual information right now
     func parseLink(indexer: XMLIndexer) throws -> Link? {
-        let visualInfo = indexer["link"]["visual"]
-        let visual = try parseVisual(visualIndexer: visualInfo)
-        return Link(visual: visual)
+        return Link()
     }
     
     // TODO: NEED to give type info to return value so it' easier for caller to differentiate between different values.
@@ -182,4 +180,8 @@ class URDFParser {
                       material: material,
                       geometry: geometry)
     }
+    
+//    func parseRobot(indexer: XMLIndexer) throws -> Robot {
+//
+//    }
 }

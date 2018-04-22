@@ -7,7 +7,20 @@
 //
 
 import Foundation
+import SceneKit
 
 struct Link {
-    let visual: Visual        
+    var sceneNode: SCNNode?
+    var visualNode: SCNNode? {
+        return sceneNode?.childNodes.first
+    }
+    
+    init(sceneNode: SCNNode? = nil) {
+        self.sceneNode = sceneNode
+    }
+    
+//    func visualize() -> SCNNode? {
+//        //let geometry = SCNGeometry(sources: <#T##[SCNGeometrySource]#>, elements: <#T##[SCNGeometryElement]?#>)
+//        return nil
+//    }
 }

@@ -54,5 +54,38 @@ class URDFParserTests: XCTestCase {
         XCTAssertTrue(joint.origin.rpy.y == 0.0)
         XCTAssertTrue(joint.origin.rpy.z == 0.0)
     }
-
+    
+    func loadURDF(fileName: String) -> Data? {
+        let testBundle = Bundle(for: type(of: self))
+        guard let url = testBundle.url(forResource: fileName, withExtension: "urdf") else {
+            print("can't find file")
+            return nil
+        }
+        guard let xmlData = try? Data(contentsOf: url) else {
+            print("can't load xmlData")
+            return nil
+        }
+        return xmlData
+    }
+    
+    func testParseLink() {
+        guard let linkURDFData = loadURDF(fileName: "linkExample") else {
+            XCTFail("Couldn't load link urdf")
+            return
+        }
+        let indexer = SWXMLHash.parse(linkURDFData)
+        let parser = URDFParser()
+        guard let _link = try? parser.parseLink(indexer: indexer) else {
+            XCTFail("parseLink shouldn't throw exception")
+            return
+        }
+        guard let link = _link else {
+            XCTFail("link should not be nil")
+            return
+        }
+        let sceneNode = link.sceneNode
+        let visualNode = link.visualNode
+        XCTAssertNotNil(sceneNode, "sceneNode should not be nil")
+        XCTAssertNotNil(visualNode, "visualNode should not be nil")
+    }
 }

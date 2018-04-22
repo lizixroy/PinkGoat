@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0AA9779208CF2B4003E6415 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AA9778208CF2B4003E6415 /* Robot.swift */; };
+		B0AA977B208CFC62003E6415 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B0AA977A208CFC62003E6415 /* cougarbot.urdf */; };
+		B0AA977D208CFD03003E6415 /* linkExample.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B0AA977C208CFD03003E6415 /* linkExample.urdf */; };
 		B0E731E3205DC646006098EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E731E2205DC646006098EC /* AppDelegate.swift */; };
 		B0E731E5205DC646006098EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E731E4205DC646006098EC /* ViewController.swift */; };
 		B0E731E7205DC646006098EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E731E6205DC646006098EC /* Assets.xcassets */; };
@@ -64,6 +67,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B0AA9778208CF2B4003E6415 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
+		B0AA977A208CFC62003E6415 /* cougarbot.urdf */ = {isa = PBXFileReference; lastKnownFileType = text; path = cougarbot.urdf; sourceTree = "<group>"; };
+		B0AA977C208CFD03003E6415 /* linkExample.urdf */ = {isa = PBXFileReference; lastKnownFileType = text; path = linkExample.urdf; sourceTree = "<group>"; };
 		B0E731DF205DC646006098EC /* PinkGoat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinkGoat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E731E2205DC646006098EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0E731E4205DC646006098EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 				B0E7322A205DDDF4006098EC /* Material.swift */,
 				B0E73233206217D8006098EC /* Joint.swift */,
 				B0E7323520623131006098EC /* Origin.swift */,
+				B0AA9778208CF2B4003E6415 /* Robot.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				B0E7323D20635014006098EC /* joint-example.urdf */,
+				B0AA977A208CFC62003E6415 /* cougarbot.urdf */,
+				B0AA977C208CFD03003E6415 /* linkExample.urdf */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -353,7 +362,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0AA977D208CFD03003E6415 /* linkExample.urdf in Resources */,
 				B0E7323E20635014006098EC /* joint-example.urdf in Resources */,
+				B0AA977B208CFC62003E6415 /* cougarbot.urdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +386,7 @@
 				B0E73225205DCF26006098EC /* Inertial.swift in Sources */,
 				B0E73229205DD987006098EC /* Geometry.swift in Sources */,
 				B0E73227205DD971006098EC /* Visual.swift in Sources */,
+				B0AA9779208CF2B4003E6415 /* Robot.swift in Sources */,
 				B0E73211205DC66B006098EC /* Link.swift in Sources */,
 				B0E7323620623131006098EC /* Origin.swift in Sources */,
 				B0E73220205DC88C006098EC /* URDFParser.swift in Sources */,
