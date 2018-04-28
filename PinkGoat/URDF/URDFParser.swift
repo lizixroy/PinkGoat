@@ -52,7 +52,9 @@ class URDFParser {
         let visualNode = SCNNode(geometry: geometry.toSceneKitGeometry())
         if let origin = origin {
             let sceneKitOrigin = convertPositionFromURDFFrameToSceneKitFrame(vector: origin.xyz)
+            let rpy = origin.rpy
             visualNode.position = sceneKitOrigin
+            visualNode.eulerAngles = rpy
         }
         link.sceneNode?.addChildNode(visualNode)
         return link

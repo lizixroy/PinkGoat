@@ -99,11 +99,10 @@ class URDFParserTests: XCTestCase {
             XCTAssertTrue(abs(visualNode.position.x - 0.025) < 0.000001, "x should be 0.025")
             XCTAssertTrue(abs(visualNode.position.y - 0.035) < 0.000001, "y should be 0.035")
             XCTAssertTrue(abs(visualNode.position.z - 0.015) < 0.000001, "z should be 0.015")
-            
             // Test orientation of visual node
-            XCTAssertEqual(visualNode.eulerAngles.x, 0.1)
-            XCTAssertEqual(visualNode.eulerAngles.y, 0.2)
-            XCTAssertEqual(visualNode.eulerAngles.z, 0.3)
+            XCTAssertTrue(abs(visualNode.eulerAngles.x - 0.1) < 0.000001)
+            XCTAssertTrue(abs(visualNode.eulerAngles.y - 0.2) < 0.000001)
+            XCTAssertTrue(abs(visualNode.eulerAngles.z - 0.3) < 0.000001)
             
             // Test geometry of visual node
             guard let visualGeometry = visualNode.geometry as? SCNCylinder else {
@@ -117,5 +116,13 @@ class URDFParserTests: XCTestCase {
             print(exception)
             XCTFail("should not throw exception")
         }
+    }
+    
+    func testParseJoint() {
+        
+    }
+    
+    func testParseRobot() {
+        
     }
 }
