@@ -118,11 +118,19 @@ class URDFParserTests: XCTestCase {
         }
     }
     
-    func testParseJoint() {
-        
-    }
-    
     func testParseRobot() {
-        
+        guard let robotURDFData = loadURDF(fileName: "cougarbot") else {
+            XCTFail("Couldn't find robot urdf")
+            return
+        }
+        let parser = URDFParser()
+        let indexer = SWXMLHash.parse(robotURDFData)
+        do {
+            let robot = try parser.parseRobot(robotIndexer: indexer)
+            XCTAssertNotNil(robot)
+        } catch (let exception) {
+            print(exception)
+            XCTFail("should not throw exception")
+        }
     }
 }

@@ -12,6 +12,10 @@ import SceneKit
 
 class URDFParser {
     
+    func parseRobot(robotIndexer: XMLIndexer) throws -> Robot? {
+        return nil
+    }
+    
     /**
         NOTE: right now only parse the following attributes:
         axis, parent, child, origin
