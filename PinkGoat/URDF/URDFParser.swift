@@ -40,18 +40,28 @@ class URDFParser {
         let originIndexer = jointIndexer["origin"]
         let origin = try parseOrigin(originIndexer: originIndexer)
         
-        return Joint(name: name, type: type, parentLinkName: parentLinkName, childLinkName: childLinkName, origin: origin)
+        return Joint(name: name, type: type, parentLinkName: parentLinkName, childLinkName: childLinkName, origin: origin!)
     }
     
     // only parse visual information right now
     func parseLink(indexer: XMLIndexer) throws -> Link? {
-        return Link()
+        let link = Link()
+        let originIndexer = indexer["visual"]["origin"]
+        let origin = try parseOrigin(originIndexer: originIndexer)
+        //let geometry = try parseGeomotry(geometryIndexer: indexer["visual"]["geometry"])
+        let visualNode = SCNNode()
+        if let origin = origin {
+            let sceneKitOrigin = convertPositionFromURDFFrameToSceneKitFrame(vector: origin.xyz)
+            visualNode.position = sceneKitOrigin
+        }
+        link.sceneNode?.addChildNode(visualNode)
+        return link
     }
     
     // TODO: NEED to give type info to return value so it' easier for caller to differentiate between different values.
-    func parseOrigin(originIndexer: XMLIndexer) throws -> Origin {
+    func parseOrigin(originIndexer: XMLIndexer) throws -> Origin? {
         guard let originInfo = originIndexer.element else {
-            throw URDFError.originError(message: "Couldn't find origin")
+            return nil
         }
         
         guard let rpy: String = try? originInfo.value(ofAttribute: "rpy") else {
@@ -169,19 +179,22 @@ class URDFParser {
         return CGColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
     
-    func parseVisual(visualIndexer: XMLIndexer) throws -> Visual {
-        let originIndexer = visualIndexer["origin"]
-        let geometryIndexer = visualIndexer["geometry"]
-        let materialIndexer = visualIndexer["material"]
-        let origin = try parseOrigin(originIndexer: originIndexer)
-        let geometry = try parseGeomotry(geometryIndexer: geometryIndexer)
-        let material = try parseMaterial(materialIndexer: materialIndexer)
-        return Visual(origin: origin,
-                      material: material,
-                      geometry: geometry)
-    }
-    
-//    func parseRobot(indexer: XMLIndexer) throws -> Robot {
-//
+//    func parseVisual(visualIndexer: XMLIndexer) throws -> Visual {
+//        let originIndexer = visualIndexer["origin"]
+//        let geometryIndexer = visualIndexer["geometry"]
+//        let materialIndexer = visualIndexer["material"]
+//        let origin = try parseOrigin(originIndexer: originIndexer)
+//        let geometry = try parseGeomotry(geometryIndexer: geometryIndexer)
+//        let material = try parseMaterial(materialIndexer: materialIndexer)
+//        return Visual(origin: origin,
+//                      material: material,
+//                      geometry: geometry)
 //    }
+    
+    func convertPositionFromURDFFrameToSceneKitFrame(vector: SCNVector3) -> SCNVector3 {
+        let x = vector.x
+        let y = vector.y
+        let z = vector.z
+        return SCNVector3(y, z, x)
+    }
 }

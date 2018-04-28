@@ -75,17 +75,45 @@ class URDFParserTests: XCTestCase {
         }
         let indexer = SWXMLHash.parse(linkURDFData)
         let parser = URDFParser()
-        guard let _link = try? parser.parseLink(indexer: indexer) else {
-            XCTFail("parseLink shouldn't throw exception")
-            return
+        
+        do {
+            let _link = try parser.parseLink(indexer: indexer["link"])
+            guard let link = _link else {
+                XCTFail("link should not be nil")
+                return
+            }
+            guard let sceneNode = link.sceneNode else {
+                XCTFail("sceneNode should not be nil")
+                return
+            }
+            guard let visualNode = link.visualNode else {
+                XCTFail("visualNode should not be nil")
+                return
+            }
+            
+            //<origin rpy="0 0 0" xyz="0.015 0.025 0.035"/>
+            XCTAssertTrue(sceneNode.position.x == 0.0, "x should be 0.025")
+            XCTAssertTrue(sceneNode.position.y == 0.0, "y should be 0.025")
+            XCTAssertTrue(sceneNode.position.z == 0.0, "z should be 0.025")
+            // Test position of visual node
+            XCTAssertTrue(abs(visualNode.position.x - 0.025) < 0.000001, "x should be 0.025")
+            XCTAssertTrue(abs(visualNode.position.y - 0.035) < 0.000001, "y should be 0.035")
+            XCTAssertTrue(abs(visualNode.position.z - 0.015) < 0.000001, "z should be 0.015")
+            
+            // Test orientation of visual node
+            
+            // Test geometry of visual node
+            guard let visualGeometry = visualNode.geometry as? SCNCylinder else {
+                XCTFail("geometry should not be nil")
+                return
+            }
+            
+            XCTAssertEqual(visualGeometry.height, 0.05, "heigt should be 0.05")
+            XCTAssertEqual(visualGeometry.radius, 0.1, "radius should be 0.1")
+            
+        } catch (let exception) {
+            print(exception)
+            XCTFail("should not throw exception")
         }
-        guard let link = _link else {
-            XCTFail("link should not be nil")
-            return
-        }
-        let sceneNode = link.sceneNode
-        let visualNode = link.visualNode
-        XCTAssertNotNil(sceneNode, "sceneNode should not be nil")
-        XCTAssertNotNil(visualNode, "visualNode should not be nil")
     }
 }

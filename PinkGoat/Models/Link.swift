@@ -9,14 +9,14 @@
 import Foundation
 import SceneKit
 
-struct Link {
+class Link {
     var sceneNode: SCNNode?
     var visualNode: SCNNode? {
         return sceneNode?.childNodes.first
     }
     
     init(sceneNode: SCNNode? = nil) {
-        self.sceneNode = sceneNode
+        self.sceneNode = sceneNode ?? SCNNode()
     }
     
 //    func visualize() -> SCNNode? {
