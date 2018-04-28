@@ -101,13 +101,15 @@ class URDFParserTests: XCTestCase {
             XCTAssertTrue(abs(visualNode.position.z - 0.015) < 0.000001, "z should be 0.015")
             
             // Test orientation of visual node
+            XCTAssertEqual(visualNode.eulerAngles.x, 0.1)
+            XCTAssertEqual(visualNode.eulerAngles.y, 0.2)
+            XCTAssertEqual(visualNode.eulerAngles.z, 0.3)
             
             // Test geometry of visual node
             guard let visualGeometry = visualNode.geometry as? SCNCylinder else {
                 XCTFail("geometry should not be nil")
                 return
             }
-            
             XCTAssertEqual(visualGeometry.height, 0.05, "heigt should be 0.05")
             XCTAssertEqual(visualGeometry.radius, 0.1, "radius should be 0.1")
             

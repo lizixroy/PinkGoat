@@ -6,7 +6,7 @@
   <material name="silver">
     <color rgba="0.75 0.75 0.75 1"/>
   </material>
-  <origin rpy="0 0 0" xyz="0.015 0.025 0.035"/>
+  <origin rpy="0.1 0.2 0.3" xyz="0.015 0.025 0.035"/>
 </visual>
 <collision>
   <geometry>

@@ -2,4 +2,69 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PinkGoatTests/URDFParserTests.swift"
+            timestampString = "546586804.2134891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "testParseLink()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PinkGoatTests.URDFParserTests.testParseLink() -&gt; ()"
+                  moduleName = "PinkGoatTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roy/Documents/PinkGoat/PinkGoatTests/URDFParserTests.swift"
+                  timestampString = "546586805.397873"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "4393">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #22 : @autoclosure () throws -&gt; CoreGraphics.CGFloat in PinkGoatTests.URDFParserTests.testParseLink() -&gt; ()"
+                  moduleName = "PinkGoatTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roy/Documents/PinkGoat/PinkGoatTests/URDFParserTests.swift"
+                  timestampString = "546586805.400457"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #24 : @autoclosure () -&gt; Swift.String in PinkGoatTests.URDFParserTests.testParseLink() -&gt; ()"
+                  moduleName = "PinkGoatTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/roy/Documents/PinkGoat/PinkGoatTests/URDFParserTests.swift"
+                  timestampString = "546586805.402678"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -48,8 +48,8 @@ class URDFParser {
         let link = Link()
         let originIndexer = indexer["visual"]["origin"]
         let origin = try parseOrigin(originIndexer: originIndexer)
-        //let geometry = try parseGeomotry(geometryIndexer: indexer["visual"]["geometry"])
-        let visualNode = SCNNode()
+        let geometry = try parseGeomotry(geometryIndexer: indexer["visual"]["geometry"])
+        let visualNode = SCNNode(geometry: geometry.toSceneKitGeometry())
         if let origin = origin {
             let sceneKitOrigin = convertPositionFromURDFFrameToSceneKitFrame(vector: origin.xyz)
             visualNode.position = sceneKitOrigin
