@@ -10,12 +10,14 @@ import Foundation
 import SceneKit
 
 class Link {
+    let name: String
     var sceneNode: SCNNode?
     var visualNode: SCNNode? {
         return sceneNode?.childNodes.first
     }
     
-    init(sceneNode: SCNNode? = nil) {
+    init(name: String? = nil, sceneNode: SCNNode? = nil) {
+        self.name = name ?? ""
         self.sceneNode = sceneNode ?? SCNNode()
     }
     

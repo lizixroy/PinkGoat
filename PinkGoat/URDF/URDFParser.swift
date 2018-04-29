@@ -67,7 +67,8 @@ class URDFParser {
     
     // only parse visual information right now
     func parseLink(indexer: XMLIndexer) throws -> Link? {
-        let link = Link()
+        let name: String? = try? indexer.value(ofAttribute: "name")
+        let link = Link(name: name, sceneNode: nil)
         let originIndexer = indexer["visual"]["origin"]
         let origin = try parseOrigin(originIndexer: originIndexer)
         let geometry = try parseGeometry(geometryIndexer: indexer["visual"]["geometry"])

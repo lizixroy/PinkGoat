@@ -94,7 +94,7 @@ class URDFParserTests: XCTestCase {
                 XCTFail("visualNode should not be nil")
                 return
             }
-            
+            XCTAssertEqual(link.name, "base_link")
             //<origin rpy="0 0 0" xyz="0.015 0.025 0.035"/>
             XCTAssertTrue(sceneNode.position.x == 0.0, "x should be 0.025")
             XCTAssertTrue(sceneNode.position.y == 0.0, "y should be 0.025")
