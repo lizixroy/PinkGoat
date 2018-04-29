@@ -139,8 +139,27 @@ class URDFParserTests: XCTestCase {
             let expectedJointCount = 5
             XCTAssertEqual(robot.links.count, expectedLinkCount)
             XCTAssertEqual(robot.joints.count, expectedJointCount)
-            
-            
+            guard
+                let worldLink: Link = robot.link(forName: "world"),
+                let base_link = robot.link(forName: "base_link"),
+                let torso = robot.link(forName: "torso"),
+                let upper_arm = robot.link(forName: "upper_arm"),
+                let lower_arm = robot.link(forName: "lower_arm"),
+                let hand = robot.link(forName: "hand"),
+
+                let fixedJoint = robot.joint(forName: "fixed"),
+                let hipJoint = robot.joint(forName: "hip"),
+                let shoulderJoint = robot.joint(forName: "shoulder"),
+                let elbowJoint = robot.joint(forName: "elbow"),
+                let wrist = robot.joint(forName: "wrist") else {
+                    XCTFail("These links and joints should be present")
+                    return
+            }
+            guard let fixedJointNode = worldLink.sceneNode?.childNodes[1] else {
+                print("fixedJontNode shouldn't be nil")
+                return
+            }
+            XCTAssertTrue(fixedJointNode === fixedJoint.node)
             
         } catch (let exception) {
             print(exception)
