@@ -12,8 +12,26 @@ import SceneKit
 
 class URDFParser {
     
-    func parseRobot(robotIndexer: XMLIndexer) throws -> Robot? {
-        return nil
+    func parseRobot(indexer: XMLIndexer) throws -> Robot? {
+        let robotIndexer = indexer["robot"]
+        if robotIndexer.element == nil {
+            throw URDFError.error(message: "<robot> is missing")
+        }
+        let linkIndexer = robotIndexer["link"]
+        var links = [Link]()
+        var joints = [Joint]()
+        for linkURDF in linkIndexer.all {
+            if let link = try parseLink(indexer: linkURDF) {
+                links.append(link)
+            }
+        }
+        let jointIndexer = robotIndexer["joint"]
+        for jointURDF in jointIndexer.all {
+            if let joint = try parseJoint(jointIndexer: jointURDF) {
+                joints.append(joint)
+            }
+        }
+        return Robot(links: links, joints: joints)
     }
     
     /**
@@ -44,7 +62,7 @@ class URDFParser {
         let originIndexer = jointIndexer["origin"]
         let origin = try parseOrigin(originIndexer: originIndexer)
         
-        return Joint(name: name, type: type, parentLinkName: parentLinkName, childLinkName: childLinkName, origin: origin!)
+        return Joint(name: name, type: type, parentLinkName: parentLinkName, childLinkName: childLinkName, origin: origin)
     }
     
     // only parse visual information right now
@@ -52,8 +70,9 @@ class URDFParser {
         let link = Link()
         let originIndexer = indexer["visual"]["origin"]
         let origin = try parseOrigin(originIndexer: originIndexer)
-        let geometry = try parseGeomotry(geometryIndexer: indexer["visual"]["geometry"])
-        let visualNode = SCNNode(geometry: geometry.toSceneKitGeometry())
+        let geometry = try parseGeometry(geometryIndexer: indexer["visual"]["geometry"])
+        let visualNode = SCNNode()
+        visualNode.geometry = geometry?.toSceneKitGeometry()
         if let origin = origin {
             let sceneKitOrigin = convertPositionFromURDFFrameToSceneKitFrame(vector: origin.xyz)
             let rpy = origin.rpy
@@ -115,11 +134,10 @@ class URDFParser {
         return Origin(xyz: displacement, rpy: orientation)
     }
     
-    func parseGeomotry(geometryIndexer: XMLIndexer) throws -> Geometry {
+    func parseGeometry(geometryIndexer: XMLIndexer) throws -> Geometry? {
         guard let geometryInfo = geometryIndexer.element else {
-            throw URDFError.geometryError(message: "Couldn't find geometry")
+            return nil
         }
-        
         let cylinderInfo = geometryIndexer["cylinder"]
         if cylinderInfo.element != nil {
             guard let radiusStr: String = cylinderInfo.value(ofAttribute: "radius") else {
@@ -135,6 +153,26 @@ class URDFParser {
                 throw URDFError.geometryError(message: "length is malformed: \(lengthStr)")
             }
             return Geometry.cylinder(length: length, radius: radius)
+        }
+        let boxInfo = geometryIndexer["box"]
+        if boxInfo.element != nil {
+            guard let size: String = boxInfo.value(ofAttribute: "size") else {
+                throw URDFError.geometryError(message: "Couldn't find size for box")
+            }
+            let sizeComponents = size.components(separatedBy: " ")
+            guard sizeComponents.count == 3 else {
+                throw URDFError.geometryError(message: "Malformed size string for box")
+            }
+            guard let width = Double(sizeComponents[0]) else {
+                throw URDFError.geometryError(message: "width needs to be numerical")
+            }
+            guard let height = Double(sizeComponents[1]) else {
+                throw URDFError.geometryError(message: "height needs to be numerical")
+            }
+            guard let length = Double(sizeComponents[2]) else {
+                throw URDFError.geometryError(message: "length needs to be numerical")
+            }
+            return Geometry.box(dim: SCNVector3(x: CGFloat(width), y: CGFloat(height), z: CGFloat(length)))
         }
         throw URDFError.geometryError(message: "Found invalid geometry type: \(geometryInfo)")
     }
@@ -184,18 +222,6 @@ class URDFParser {
         }
         return CGColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
-    
-//    func parseVisual(visualIndexer: XMLIndexer) throws -> Visual {
-//        let originIndexer = visualIndexer["origin"]
-//        let geometryIndexer = visualIndexer["geometry"]
-//        let materialIndexer = visualIndexer["material"]
-//        let origin = try parseOrigin(originIndexer: originIndexer)
-//        let geometry = try parseGeomotry(geometryIndexer: geometryIndexer)
-//        let material = try parseMaterial(materialIndexer: materialIndexer)
-//        return Visual(origin: origin,
-//                      material: material,
-//                      geometry: geometry)
-//    }
     
     func convertPositionFromURDFFrameToSceneKitFrame(vector: SCNVector3) -> SCNVector3 {
         let x = vector.x

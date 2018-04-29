@@ -43,16 +43,20 @@ class URDFParserTests: XCTestCase {
             XCTFail("joint shouldn't be nil")
             return
         }
+        guard let origin = joint.origin else {
+            XCTFail("origin shouldn't be nil")
+            return
+        }
         XCTAssertTrue(joint.name == "hip")
         XCTAssertTrue(joint.type == .continuous)
         XCTAssertTrue(joint.parentLinkName == "base_link")
         XCTAssertTrue(joint.childLinkName == "torso")
-        XCTAssertTrue(joint.origin.xyz.x == 0.0)
-        XCTAssertTrue(joint.origin.xyz.y == 0.0)
-        XCTAssertTrue(fabs(joint.origin.xyz.z - 0.05) < 0.000001)
-        XCTAssertTrue(joint.origin.rpy.x == 0.0)
-        XCTAssertTrue(joint.origin.rpy.y == 0.0)
-        XCTAssertTrue(joint.origin.rpy.z == 0.0)
+        XCTAssertTrue(origin.xyz.x == 0.0)
+        XCTAssertTrue(origin.xyz.y == 0.0)
+        XCTAssertTrue(fabs(origin.xyz.z - 0.05) < 0.000001)
+        XCTAssertTrue(origin.rpy.x == 0.0)
+        XCTAssertTrue(origin.rpy.y == 0.0)
+        XCTAssertTrue(origin.rpy.z == 0.0)
     }
     
     func loadURDF(fileName: String) -> Data? {
@@ -126,8 +130,18 @@ class URDFParserTests: XCTestCase {
         let parser = URDFParser()
         let indexer = SWXMLHash.parse(robotURDFData)
         do {
-            let robot = try parser.parseRobot(robotIndexer: indexer)
+            guard let robot = try parser.parseRobot(indexer: indexer) else {
+                XCTFail("Robot shouldn't be nil")
+                return
+            }
             XCTAssertNotNil(robot)
+            let expectedLinkCount = 6
+            let expectedJointCount = 5
+            XCTAssertEqual(robot.links.count, expectedLinkCount)
+            XCTAssertEqual(robot.joints.count, expectedJointCount)
+            
+            
+            
         } catch (let exception) {
             print(exception)
             XCTFail("should not throw exception")

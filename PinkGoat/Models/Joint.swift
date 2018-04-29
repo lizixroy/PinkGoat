@@ -14,13 +14,13 @@ class Joint {
     let type: JointType
     let parentLinkName: String
     let childLinkName: String
-    let origin: Origin
+    let origin: Origin?
     
     init(name: String,
          type: JointType,
          parentLinkName: String,
          childLinkName: String,
-         origin: Origin) {
+         origin: Origin?) {
         self.name = name
         self.type = type
         self.parentLinkName = parentLinkName
@@ -32,15 +32,18 @@ class Joint {
         case continuous
         case revolute
         case prismatic
+        case fixed
     }
     
     class func makeJointType(fromString str: String) -> Joint.JointType? {
         if str == "continuous" {
-            return JointType.continuous
+            return .continuous
         } else if str == "revolute" {
-            return JointType.revolute
+            return .revolute
         } else if str == "prismatic" {
-            return JointType.prismatic
+            return .prismatic
+        } else if str == "fixed" {
+            return .fixed
         } else {
             return nil
         }
