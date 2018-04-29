@@ -11,9 +11,9 @@ import SceneKit
 
 class Link {
     let name: String
-    var sceneNode: SCNNode?
+    var sceneNode: SCNNode
     var visualNode: SCNNode? {
-        return sceneNode?.childNodes.first
+        return sceneNode.childNodes.first
     }
     
     init(name: String? = nil, sceneNode: SCNNode? = nil) {

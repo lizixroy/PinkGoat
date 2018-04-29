@@ -80,7 +80,7 @@ class URDFParser {
             visualNode.position = sceneKitOrigin
             visualNode.eulerAngles = rpy
         }
-        link.sceneNode?.addChildNode(visualNode)
+        link.sceneNode.addChildNode(visualNode)
         return link
     }
     

@@ -16,7 +16,7 @@ class Joint {
     let parentLinkName: String
     let childLinkName: String
     let origin: Origin?
-    let node: SCNNode
+    let sceneNode: SCNNode
     
     init(name: String,
          type: JointType,
@@ -28,11 +28,11 @@ class Joint {
         self.parentLinkName = parentLinkName
         self.childLinkName = childLinkName
         self.origin = origin
-        node = SCNNode()
+        sceneNode = SCNNode()
         if let origin = origin {
             let positionAndeulerAngles = origin.toPositionAndEulerAngles()
-            node.position = positionAndeulerAngles.position
-            node.eulerAngles = positionAndeulerAngles.eulerAngles
+            sceneNode.position = positionAndeulerAngles.position
+            sceneNode.eulerAngles = positionAndeulerAngles.eulerAngles
         }
     }
     

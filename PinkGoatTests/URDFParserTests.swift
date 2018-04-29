@@ -86,10 +86,7 @@ class URDFParserTests: XCTestCase {
                 XCTFail("link should not be nil")
                 return
             }
-            guard let sceneNode = link.sceneNode else {
-                XCTFail("sceneNode should not be nil")
-                return
-            }
+            let sceneNode = link.sceneNode
             guard let visualNode = link.visualNode else {
                 XCTFail("visualNode should not be nil")
                 return
@@ -141,25 +138,44 @@ class URDFParserTests: XCTestCase {
             XCTAssertEqual(robot.joints.count, expectedJointCount)
             guard
                 let worldLink: Link = robot.link(forName: "world"),
-                let base_link = robot.link(forName: "base_link"),
-                let torso = robot.link(forName: "torso"),
-                let upper_arm = robot.link(forName: "upper_arm"),
-                let lower_arm = robot.link(forName: "lower_arm"),
-                let hand = robot.link(forName: "hand"),
+                let baseLink = robot.link(forName: "base_link"),
+                let torsoLink = robot.link(forName: "torso"),
+                let upperArmLink = robot.link(forName: "upper_arm"),
+                let lowerArmLink = robot.link(forName: "lower_arm"),
+                let handLink = robot.link(forName: "hand"),
 
                 let fixedJoint = robot.joint(forName: "fixed"),
                 let hipJoint = robot.joint(forName: "hip"),
                 let shoulderJoint = robot.joint(forName: "shoulder"),
                 let elbowJoint = robot.joint(forName: "elbow"),
-                let wrist = robot.joint(forName: "wrist") else {
+                let wristJoint = robot.joint(forName: "wrist") else {
                     XCTFail("These links and joints should be present")
                     return
             }
-            guard let fixedJointNode = worldLink.sceneNode?.childNodes[1] else {
-                print("fixedJontNode shouldn't be nil")
-                return
-            }
-            XCTAssertTrue(fixedJointNode === fixedJoint.node)
+            
+            let worldLinkSceneNode = worldLink.sceneNode
+            let baseLinkSceneNode = baseLink.sceneNode
+            let torsoLinkSceneNode = torsoLink.sceneNode
+            let upperArmLinkSceneNode = upperArmLink.sceneNode
+            let lowerArmLinkSceneNode = lowerArmLink.sceneNode
+            let handLinkSceneNode = handLink.sceneNode
+            
+            let fixedJointSceneNode = fixedJoint.sceneNode
+            let hipJointSceneNode = hipJoint.sceneNode
+            let shoulderJointSceneNode = shoulderJoint.sceneNode
+            let elbowJointSceneNode = elbowJoint.sceneNode
+            let wristJointSceneNode = wristJoint.sceneNode
+            
+            XCTAssertTrue(worldLinkSceneNode.childNodes[1] === fixedJointSceneNode)
+            XCTAssertTrue(fixedJointSceneNode.childNodes[0] === baseLinkSceneNode)
+            XCTAssertTrue(baseLinkSceneNode.childNodes[1] === hipJointSceneNode)
+            XCTAssertTrue(hipJointSceneNode.childNodes[0] === torsoLinkSceneNode)
+            XCTAssertTrue(torsoLinkSceneNode.childNodes[1] === shoulderJointSceneNode)
+            XCTAssertTrue(shoulderJointSceneNode.childNodes[0] === upperArmLinkSceneNode)
+            XCTAssertTrue(upperArmLinkSceneNode.childNodes[1] === elbowJointSceneNode)
+            XCTAssertTrue(elbowJointSceneNode.childNodes[0] === lowerArmLinkSceneNode)
+            XCTAssertTrue(lowerArmLinkSceneNode.childNodes[1] === wristJointSceneNode)
+            XCTAssertTrue(wristJointSceneNode.childNodes[0] === handLinkSceneNode)
             
         } catch (let exception) {
             print(exception)
