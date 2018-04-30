@@ -32,9 +32,7 @@ class Robot {
                 print("Error creating robot: parentLink named \(parentLinkName) doesn't exist")
                 return nil
             }
-            print("adding joint: \(joint.name) to link: \(parentLink.name)")
             parentLink.sceneNode.addChildNode(joint.sceneNode)
-            print("adding link: \(childLink.name) to joint: \(joint.name)")
             joint.sceneNode.addChildNode(childLink.sceneNode)
         }
     }

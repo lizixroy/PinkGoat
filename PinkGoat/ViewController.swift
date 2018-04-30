@@ -151,7 +151,11 @@ class ViewController: NSViewController {
             }
             
         } catch (let exception) {
-            print("exception: \(exception.localizedDescription)")
+            if let exception = exception as? URDFError {
+                print("exception: \(exception)")
+            } else {
+                print(exception)
+            }
         }
     }
 
