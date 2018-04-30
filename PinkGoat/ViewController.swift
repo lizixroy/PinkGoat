@@ -14,7 +14,7 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        testSceneKit()
+        testParser()
     }
     
     func setup() {
@@ -124,7 +124,7 @@ class ViewController: NSViewController {
     }
     
     func testParser() {
-        guard let url = Bundle.main.url(forResource: "link-example", withExtension: "urdf") else {
+        guard let url = Bundle.main.url(forResource: "cougarbot", withExtension: "urdf") else {
             print("can't find file")
             return
         }
@@ -133,13 +133,26 @@ class ViewController: NSViewController {
             return
         }
         let indexer = SWXMLHash.parse(xmlData)
-        let materialIndexer = indexer["link"]["visual"]["material"]
-        let urdfParser = URDFParser()
-        guard let material = try! urdfParser.parseMaterial(materialIndexer: materialIndexer) else {
-            print("failed to parse origin")
-            return
+        let parser = URDFParser()
+        do {
+            let robot = try parser.parseRobot(indexer: indexer)
+            setup()
+            guard let scnView = self.view as? SCNView else {
+                print("invalid scnView")
+                return
+            }
+            guard let scene = scnView.scene else {
+                print("invalud scene")
+                return
+            }
+            
+            if let robotRootNode = robot?.sceneNode {
+                scene.rootNode.addChildNode(robotRootNode)
+            }
+            
+        } catch (let exception) {
+            print("exception: \(exception.localizedDescription)")
         }
-        print("material: \(material)")
     }
 
     override var representedObject: Any? {

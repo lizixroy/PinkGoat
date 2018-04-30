@@ -10,6 +10,7 @@
 		B0AA9779208CF2B4003E6415 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AA9778208CF2B4003E6415 /* Robot.swift */; };
 		B0AA977B208CFC62003E6415 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B0AA977A208CFC62003E6415 /* cougarbot.urdf */; };
 		B0AA977D208CFD03003E6415 /* linkExample.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B0AA977C208CFD03003E6415 /* linkExample.urdf */; };
+		B0AA977F2096CA34003E6415 /* cougarbot.urdf in Resources */ = {isa = PBXBuildFile; fileRef = B0AA977E2096CA34003E6415 /* cougarbot.urdf */; };
 		B0E731E3205DC646006098EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E731E2205DC646006098EC /* AppDelegate.swift */; };
 		B0E731E5205DC646006098EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E731E4205DC646006098EC /* ViewController.swift */; };
 		B0E731E7205DC646006098EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0E731E6205DC646006098EC /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		B0AA9778208CF2B4003E6415 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		B0AA977A208CFC62003E6415 /* cougarbot.urdf */ = {isa = PBXFileReference; lastKnownFileType = text; path = cougarbot.urdf; sourceTree = "<group>"; };
 		B0AA977C208CFD03003E6415 /* linkExample.urdf */ = {isa = PBXFileReference; lastKnownFileType = text; path = linkExample.urdf; sourceTree = "<group>"; };
+		B0AA977E2096CA34003E6415 /* cougarbot.urdf */ = {isa = PBXFileReference; lastKnownFileType = text; path = cougarbot.urdf; sourceTree = "<group>"; };
 		B0E731DF205DC646006098EC /* PinkGoat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinkGoat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0E731E2205DC646006098EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0E731E4205DC646006098EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				B0E73222205DC8ED006098EC /* link-example.urdf */,
+				B0AA977E2096CA34003E6415 /* cougarbot.urdf */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				B0E73223205DC8ED006098EC /* link-example.urdf in Resources */,
 				B0E731E7205DC646006098EC /* Assets.xcassets in Resources */,
 				B0E731EA205DC646006098EC /* Main.storyboard in Resources */,
+				B0AA977F2096CA34003E6415 /* cougarbot.urdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

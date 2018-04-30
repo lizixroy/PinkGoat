@@ -15,14 +15,8 @@ class Link {
     var visualNode: SCNNode? {
         return sceneNode.childNodes.first
     }
-    
     init(name: String? = nil, sceneNode: SCNNode? = nil) {
         self.name = name ?? ""
         self.sceneNode = sceneNode ?? SCNNode()
     }
-    
-//    func visualize() -> SCNNode? {
-//        //let geometry = SCNGeometry(sources: <#T##[SCNGeometrySource]#>, elements: <#T##[SCNGeometryElement]?#>)
-//        return nil
-//    }
 }
