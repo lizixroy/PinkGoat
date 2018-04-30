@@ -1,16 +1,16 @@
 //
-//  PinkGoatTests.swift
+//  JointTests.swift
 //  PinkGoatTests
 //
-//  Created by Roy Li on 3/17/18.
+//  Created by Roy Li on 3/21/18.
 //  Copyright © 2018 Roy Li. All rights reserved.
 //
 
 import XCTest
 @testable import PinkGoat
 
-class PinkGoatTests: XCTestCase {
-    
+class JointTests: XCTestCase {
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.

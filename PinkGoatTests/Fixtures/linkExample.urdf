@@ -1,0 +1,22 @@
+<link name="base_link">
+<visual>
+  <geometry>
+    <cylinder length="0.05" radius="0.1"/>
+  </geometry>
+  <material name="silver">
+    <color rgba="0.75 0.75 0.75 1"/>
+  </material>
+  <origin rpy="0.1 0.2 0.3" xyz="0.015 0.025 0.035"/>
+</visual>
+<collision>
+  <geometry>
+    <cylinder length="0.05" radius="0.1"/>
+  </geometry>
+  <origin rpy="0 0 0" xyz="0 0 0.025"/>
+</collision>
+<inertial>
+  <mass value="1.0"/>
+  <origin rpy="0 0 0" xyz="0 0 0.025"/>
+  <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+</inertial>
+</link>

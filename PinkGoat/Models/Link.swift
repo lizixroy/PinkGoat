@@ -7,7 +7,16 @@
 //
 
 import Foundation
+import SceneKit
 
-struct Link {
-    
+class Link {
+    let name: String
+    var sceneNode: SCNNode
+    var visualNode: SCNNode? {
+        return sceneNode.childNodes.first
+    }
+    init(name: String? = nil, sceneNode: SCNNode? = nil) {
+        self.name = name ?? ""
+        self.sceneNode = sceneNode ?? SCNNode()
+    }
 }
