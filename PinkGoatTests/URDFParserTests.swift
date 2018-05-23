@@ -97,7 +97,8 @@ class URDFParserTests: XCTestCase {
             XCTAssertTrue(sceneNode.position.y == 0.0, "y should be 0.025")
             XCTAssertTrue(sceneNode.position.z == 0.0, "z should be 0.025")
             // Test position of visual node
-            XCTAssertTrue(abs(visualNode.position.x - 0.025) < 0.000001, "x should be 0.025")
+            
+            XCTAssertLessThan(abs(visualNode.position.x - 0.025), 0.00001)
             XCTAssertTrue(abs(visualNode.position.y - 0.035) < 0.000001, "y should be 0.035")
             XCTAssertTrue(abs(visualNode.position.z - 0.015) < 0.000001, "z should be 0.015")
             // Test orientation of visual node
@@ -176,7 +177,6 @@ class URDFParserTests: XCTestCase {
             XCTAssertTrue(elbowJointSceneNode.childNodes[0] === lowerArmLinkSceneNode)
             XCTAssertTrue(lowerArmLinkSceneNode.childNodes[1] === wristJointSceneNode)
             XCTAssertTrue(wristJointSceneNode.childNodes[0] === handLinkSceneNode)
-            
         } catch (let exception) {
             print(exception)
             XCTFail("should not throw exception")

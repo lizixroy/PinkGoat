@@ -12,9 +12,15 @@ import SceneKit
 
 class ViewController: NSViewController {
 
+    var robot: Robot!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         testParser()
+        
+        if let firstJoint = self.robot.joints.first {
+            print("firstJoint: \(firstJoint)")
+        }
     }
     
     func setup() {
@@ -149,6 +155,8 @@ class ViewController: NSViewController {
             if let robotRootNode = robot?.sceneNode {
                 scene.rootNode.addChildNode(robotRootNode)
             }
+            
+            self.robot = robot
             
         } catch (let exception) {
             if let exception = exception as? URDFError {
